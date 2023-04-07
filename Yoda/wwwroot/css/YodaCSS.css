@@ -1,0 +1,218 @@
+﻿.bg-green {
+    background-size: cover;
+    background-color: #89DC02;
+}
+
+.bg-white {
+    background-size: cover;
+    background-color: #FFFFFF;
+}
+
+.bg-gray {
+    background-size: cover;
+    background-color: #252525;
+}
+
+.btn-signup {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .30rem;
+    color: #fff;
+    background-color: rgba(28,28,28,0);
+    border: 2px solid #89DC02;
+}
+
+
+    .btn-signup:hover {
+        background-color: #89DC02;
+        filter: drop-shadow(0px 1px 5px #89DC02);
+    }
+
+.btn-login {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .30rem;
+    color: #fff;
+    background-color: rgba(28,28,28,0);
+    border: 2px solid #FBE948;
+}
+
+
+    .btn-login:hover {
+        background: rgba(251, 233, 72, 0.60);
+        filter: drop-shadow(0px 1px 5px #FBE948);
+    }
+
+.logo-shadow {
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0px 4px 4px #000000);
+}
+
+.btn-newnote {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .30rem;
+    color: #fff;
+    background-color: rgba(28,28,28,0);
+    border: 2px solid #FFFFFF;
+}
+
+
+    .btn-newnote:hover {
+        filter: drop-shadow(0px 1px 5px #FFFFFF);
+    }
+
+
+
+.note {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.note-white {
+    background-color: #FFFFFF;
+    opacity: 0.75;
+}
+
+.note-red {
+    background-color: #EB3A3A;
+    opacity: 0.75;
+}
+
+.note-green {
+    background-color: #2CC129;
+    opacity: 0.75;
+}
+
+.note-blue {
+    background-color: #3D3AEB;
+    opacity: 0.75;
+}
+
+.note-yellow {
+    background-color: #EBC43A;
+    opacity: 0.75;
+}
+
+.noter-purple {
+    background-color: #8123BB;
+    opacity: 0.75;
+}
+
+.noter-complete {
+    background-color: #676363;
+    opacity: 0.75;
+}
+
+
+.note-white:hover {
+    background-color: #FFFFFF;
+    opacity: 1;
+}
+
+.note-red:hover {
+    background-color: #EB3A3A;
+    opacity: 1;
+}
+
+.note-green:hover {
+    background-color: #2CC129;
+    opacity: 1;
+}
+
+.note-blue:hover {
+    background-color: #3D3AEB;
+    opacity: 1;
+}
+
+.note-yellow:hover {
+    background-color: #EBC43A;
+    opacity: 1;
+}
+
+.noter-purple:hover {
+    background-color: #8123BB;
+    opacity: 1;
+}
+
+.noter-complete:hover {
+    background-color: #676363;
+    opacity: 1;
+}
+
+del {
+    text-decoration: line-through;
+    text-decoration-color: white;
+}
+
+.btn-NoFavorite::before {
+    content: '☆';
+    color: #252525;
+    font-size: 2rem;
+}
+
+.btn-NoFavorite:hover::before {
+    content: '★';
+    color: #EBC43A;
+}
+
+.btn-IsFavorite::before {
+    content: '★';
+    font-size: 2rem;
+    color: #EBC43A;
+}
+
+.btn-NoComplete::before {
+    content: '✓';
+    color: #252525;
+    font-size: 2rem;
+}
+
+.btn-NoComplete:hover::before {
+    content: '✓';
+    color: #89DC02;
+}
+
+.btn-IsComplete::before {
+    content: '✓';
+    font-size: 2rem;
+    color: #89DC02;
+}
+
+
+.btn-Delete::before {
+    content: '✗';
+    color: #252525;
+    font-size: 1.5rem;
+}
+
+.btn-Delete:hover::before {
+    content: '✗';
+    color: #EB3A3A;
+}
+
+.btn-Update::before {
+    content: '📝';
+    color: #252525;
+    font-size: 1.5rem;
+}

@@ -1,0 +1,263 @@
+﻿@model List<NoteViewModel>
+@{
+    ViewBag.Title = "Notes";
+    Layout = "_Layout";
+}
+
+
+<div class="container">
+    <div class="my-3 ">
+        <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+        <div class="col-12 mb-3">
+            <a asp-action="Create" asp-controller="Note" class="btn-newnote col-12">Add new note ✍</a>
+            <a class="d-flex align-items-center text-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="text-light text-end">Sort by</span>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                    <li><a asp-action="NotesDateCreated" asp-controller="Note" class="dropdown-item">Date create</a></li>
+                    <li><a asp-action="NotesDateEdit" asp-controller="Note" class="dropdown-item">Date edit</a></li>
+                    <li><a asp-action="NotesName" asp-controller="Note" class="dropdown-item">Name</a></li>
+                </ul>
+            </a>
+        </div>        
+        @if(Model.Count == 0)
+        {
+            <h1 class="text-light text-center py-5">You don't have any notes 😞</h1>
+        }
+        else
+        {
+            @foreach (var note in Model)
+            {
+                #region Confirm
+                if (note.IsConfirm==true)
+                {
+                    <div class="note noter-complete pt-3 d-flex" asp-controller="Note" asp-action="Update" asp-route-id="@note.Id">
+                        <button class="btn"><a asp-action="Update" asp-controller="Note" asp-route-id="@note.Id" class="btn btn-Update"></a></button>
+                        <form class="" asp-controller="Note" asp-action="Confirm" asp-route-id="@note.Id" method="post">
+                            <button class="btn btn-IsComplete"></button>
+                        </form>
+                        <div class=" mb-0 small lh-sm w-100">
+                            <div class="d-flex justify-content-between">
+                                <strong class="text-dark"><del>@note.Title</del></strong>
+                                <form class="" asp-controller="Note" asp-action="Delete" asp-route-id="@note.Id" method="post">
+                                    <button type="submit" class="btn btn-Delete"></button>
+                                </form>
+                            </div>
+                            <span class="d-block">@note.DateCreated.ToString("dd.MM.yyyy hh:mm")</span>
+                        </div>
+                    </div>
+                }
+                #endregion
+                else
+                {             
+                    switch (note.Marker)
+                    {
+                        #region White
+                        case "#FFFFFF":
+                            <div class="note note-white pt-3 d-flex" asp-controller="Note" asp-action="Update" asp-route-id="@note.Id">
+                                <button class="btn"><a asp-action="Update" asp-controller="Note" asp-route-id="@note.Id" class="btn btn-Update"></a></button>
+                                <form class="" asp-controller="Note" asp-action="Confirm" asp-route-id="@note.Id" method="post">
+                                    <button class="btn btn-NoComplete"></button>
+                                </form>
+                                <form class="" asp-controller="Note" asp-action="Favorite" asp-route-id="@note.Id" method="post">
+                                    @if(note.IsFavorite == true)
+                                    {
+                                        <button class="btn btn-IsFavorite"></button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-NoFavorite"></button>
+                                    }
+                                </form>
+                                <div class=" mb-0 small lh-sm w-100">
+                                    <div class="d-flex justify-content-between">
+                                        <strong class="text-dark">@note.Title</strong>
+                                        <form class="" asp-controller="Note" asp-action="Delete" asp-route-id="@note.Id" method="post">
+                                            <button type="submit" class="btn btn-Delete"></button>
+                                        </form>
+                                    </div>
+                                    <span class="d-block">@note.DateCreated.ToString("dd.MM.yyyy hh:mm")</span>
+                                </div>
+                            </div>
+                            break;
+                            #endregion
+                        #region Red
+                        case "#EB3A3A":
+                            <div class="note note-red pt-3 d-flex">
+                                <button class="btn"><a asp-action="Update" asp-controller="Note" asp-route-id="@note.Id" class="btn btn-Update"></a></button>
+                                <form class="" asp-controller="Note" asp-action="Confirm" asp-route-id="@note.Id" method="post">
+                                    <button class="btn btn-NoComplete"></button>
+                                </form>
+                                <form class="" asp-controller="Note" asp-action="Favorite" asp-route-id="@note.Id" method="post">
+                                    @if (note.IsFavorite == true)
+                                    {
+                                        <button class="btn btn-IsFavorite"></button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-NoFavorite"></button>
+                                    }
+                                </form>
+                                <div class=" mb-0 small lh-sm   w-100">
+                                    <div class="d-flex justify-content-between">
+                                        <strong class="text-light">@note.Title</strong>
+                                        <form class="" asp-controller="Note" asp-action="Delete" asp-route-id="@note.Id" method="post">
+                                            <button type="submit" class="btn btn-Delete"></button>
+                                        </form>
+                                    </div>
+                                    <span class="d-block">@note.DateCreated.ToString("dd.MM.yyyy hh:mm")</span>
+                                </div>
+                            </div>
+                            break;
+                            #endregion
+                        #region Green
+                        case "#2CC129":
+                            <div class="note note-green pt-3 d-flex">
+                                <button class="btn"><a asp-action="Update" asp-controller="Note" asp-route-id="@note.Id" class="btn btn-Update"></a></button>
+                                <form class="" asp-controller="Note" asp-action="Confirm" asp-route-id="@note.Id" method="post">
+                                    <button class="btn btn-NoComplete"></button>
+                                </form>
+                                <form class="" asp-controller="Note" asp-action="Favorite" asp-route-id="@note.Id" method="post">
+                                    @if (note.IsFavorite == true)
+                                    {
+                                        <button class="btn btn-IsFavorite"></button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-NoFavorite"></button>
+                                    }
+                                </form>
+                                <div class=" mb-0 small lh-sm   w-100">
+                                    <div class="d-flex justify-content-between">
+                                        <strong class="text-light">@note.Title</strong>
+                                        <form class="" asp-controller="Note" asp-action="Delete" asp-route-id="@note.Id" method="post">
+                                            <button type="submit" class="btn btn-Delete"></button>
+                                        </form>
+                                    </div>
+                                    <span class="d-block">@note.DateCreated.ToString("dd.MM.yyyy hh:mm")</span>
+                                </div>
+                            </div>
+                            break;
+                            #endregion
+                        #region Blue
+                        case "#3D3AEB":
+                            <div class="note note-blue pt-3 d-flex">
+                                <button class="btn"><a asp-action="Update" asp-controller="Note" asp-route-id="@note.Id" class="btn btn-Update"></a></button>
+                                <form class="" asp-controller="Note" asp-action="Confirm" asp-route-id="@note.Id" method="post">
+                                    <button class="btn btn-NoComplete"></button>
+                                </form>
+                                <form class="" asp-controller="Note" asp-action="Favorite" asp-route-id="@note.Id" method="post">
+                                    @if (note.IsFavorite == true)
+                                    {
+                                        <button class="btn btn-IsFavorite"></button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-NoFavorite"></button>
+                                    }
+                                </form>
+                                <div class=" mb-0 small lh-sm   w-100">
+                                    <div class="d-flex justify-content-between">
+                                        <strong class="text-light">@note.Title</strong>
+                                        <form class="" asp-controller="Note" asp-action="Delete" asp-route-id="@note.Id" method="post">
+                                            <button type="submit" class="btn btn-Delete"></button>
+                                        </form>
+                                    </div>
+                                    <span class="d-block">@note.DateCreated.ToString("dd.MM.yyyy hh:mm")</span>
+                                </div>
+                            </div>
+                            break;
+                            #endregion
+                        #region Yellow 
+                        case "#EBC43A":
+                            <div class="note note-yellow pt-3 d-flex">
+                                <button class="btn"><a asp-action="Update" asp-controller="Note" asp-route-id="@note.Id" class="btn btn-Update"></a></button>
+                                <form class="" asp-controller="Note" asp-action="Confirm" asp-route-id="@note.Id" method="post">
+                                    <button class="btn btn-NoComplete"></button>
+                                </form>
+                                <form class="" asp-controller="Note" asp-action="Favorite" asp-route-id="@note.Id" method="post">
+                                    @if (note.IsFavorite == true)
+                                    {
+                                        <button class="btn btn-IsFavorite"></button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-NoFavorite"></button>
+                                    }
+                                </form>
+                                <div class=" mb-0 small lh-sm   w-100">
+                                    <div class="d-flex justify-content-between">
+                                        <strong class="text-light">@note.Title</strong>
+                                        <form class="" asp-controller="Note" asp-action="Delete" asp-route-id="@note.Id" method="post">
+                                            <button type="submit" class="btn btn-Delete"></button>
+                                        </form>
+                                    </div>
+                                    <span class="d-block">@note.DateCreated.ToString("dd.MM.yyyy hh:mm")</span>
+                                </div>
+                            </div>
+                            break;
+                            #endregion
+                        #region Purple
+                        case "#8123BB":
+                            <div class="note noter-purple pt-3 d-flex">
+                                <button class="btn"><a asp-action="Update" asp-controller="Note" asp-route-id="@note.Id" class="btn btn-Update"></a></button>
+                                <form class="" asp-controller="Note" asp-action="Confirm" asp-route-id="@note.Id" method="post">
+                                    <button class="btn btn-NoComplete"></button>
+                                </form>
+                                <form class="" asp-controller="Note" asp-action="Favorite" asp-route-id="@note.Id" method="post">
+                                    @if (note.IsFavorite == true)
+                                    {
+                                        <button class="btn btn-IsFavorite"></button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-NoFavorite"></button>
+                                    }
+                                </form>
+                                <div class=" mb-0 small lh-sm   w-100">
+                                    <div class="d-flex justify-content-between">
+                                        <strong class="text-light">@note.Title</strong>
+                                        <form class="" asp-controller="Note" asp-action="Delete" asp-route-id="@note.Id" method="post">
+                                            <button type="submit" class="btn btn-Delete"></button>
+                                        </form>
+                                    </div>
+                                    <span class="d-block">@note.DateCreated.ToString("dd.MM.yyyy hh:mm")</span>
+                                </div>
+                            </div>
+                            break;
+                            #endregion
+                        #region Default
+                        default:
+                            <div class="note note-white pt-3 d-flex" asp-controller="Note" asp-action="Update" asp-route-id="@note.Id">
+                                <button class="btn"><a asp-action="Update" asp-controller="Note" asp-route-id="@note.Id" class="btn btn-Update"></a></button>
+                                <form class="" asp-controller="Note" asp-action="Confirm" asp-route-id="@note.Id" method="post">
+                                    <button class="btn btn-NoComplete"></button>
+                                </form>
+                                <form class="" asp-controller="Note" asp-action="Favorite" asp-route-id="@note.Id" method="post">
+                                    @if(note.IsFavorite == true)
+                                    {
+                                        <button class="btn btn-IsFavorite"></button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-NoFavorite"></button>
+                                    }
+                                </form>
+                                <div class=" mb-0 small lh-sm   w-100">
+                                    <div class="d-flex justify-content-between">
+                                        <strong class="text-dark">@note.Title</strong>
+                                        <form class="" asp-controller="Note" asp-action="Delete" asp-route-id="@note.Id" method="post">
+                                            <button type="submit" class="btn btn-Delete"></button>
+                                        </form>
+                                    </div>
+                                    <span class="d-block">@note.DateCreated.ToString("dd.MM.yyyy hh:mm")</span>
+                                </div>
+                            </div>
+                            break;
+                            #endregion
+                    }
+                }
+            }
+        }
+    </div>
+</div>
+

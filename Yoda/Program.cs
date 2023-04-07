@@ -1,6 +1,9 @@
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Yoda.Data;
 using Yoda.Models.Entity;
+using Yoda.Services.Implementation;
+using Yoda.Services.Interface;
 
 namespace Yoda
 {
@@ -16,7 +19,10 @@ namespace Yoda
 
             builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppDbContext>();
 
-            // Add services to the container.
+            builder.Services.AddScoped<INoteRepository, NoteRepository>();
+            builder.Services.AddScoped<INoteService, NoteService>();
+            builder.Services.AddTransient<IEmailSender, EmailService>();
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
