@@ -71,6 +71,16 @@ namespace Yoda.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
+            [StringLength(255, ErrorMessage = "The name field should have a maximum of 255 characters.")]
+            [Required]
+            [Display(Name = "Name")]
+            public string FirstName { get; set; }
+
+
+            [StringLength(255, ErrorMessage = "The surname field should have a maximum of 255 characters.")]
+            [Required]
+            [Display(Name = "Surname")]
+            public string LastName { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -113,8 +123,10 @@ namespace Yoda.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = CreateUser();
 
+                var user = CreateUser();
+                user.FirstName = Input.FirstName;
+                user.LastName = Input.LastName;
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
@@ -132,11 +144,12 @@ namespace Yoda.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
+                        var callCode = HtmlEncoder.Default.Encode(callbackUrl);
+                        await _emailSender.SendEmailAsync(Input.Email, $"{Input.FirstName} {Input.LastName} confirm your email.", $"<div style=\"background-size: cover; background-color:#252525\"><br /><div class=\"container\"><p style=\"text-align:center\"><img src=\"https://raw.githubusercontent.com/danil54543/YodaNotes/master/YodaNotes/wwwroot/img/YodaLogoHeader.png\" style=\"height:89px; width:200px\" /></p></div><p style=\"margin-left:40px\"><span style=\"color:#ffffff\"><span>Hi {Input.FirstName},</span></span></p><p style=\"margin-left:40px\"><span style=\"color:#ffffff\"><span>You have successfully created Yoda account. Please click button below to verify your email address and complete your registration.</span></span></p><p style=\"margin-left:40px\"><a style=\"color:#89DC02\" href=\"{callCode}\" target=\"\\&quot;_blank\\&quot;\">Verify your Email</a></p><p style=\"margin-left:40px\"><span style=\"color:#ffffff\"><strong>Having trouble?</strong><br />If above method doesn&#39;t work try copying and pasting this link into your browser.</span><br /><a style=\"color:#89DC02\" href=\"callCode\" target=\"\\&quot;_blank\\&quot;\">{callCode}</a></p><p style=\"margin-left:40px\"><span style=\"color:#ffffff\">Best Regards,<br />Team Yoda</span></p><hr /><p style=\"text-align:center\"><br /><span style=\"color:#999999\">You are receiving this email as you subscribed at Yoda. Visit our Privacy Policy to learn your rights and how we use your data.</span><br />&nbsp;</p></div>");
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
                     }
                     else

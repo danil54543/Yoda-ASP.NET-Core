@@ -1,8 +1,52 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Yoda";
+    Layout = "_Layout";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link href="~/css/YodaCSS.css" rel="stylesheet" />
+<div class="bg-gray">
+    <section class="py-5">
+        <div class="row py-lg-5">
+            <div class="mx-auto">
+                <img src="~/img/YodaLogo.png" class="logo-shadow" />
+            </div>
+        </div>
+    </section>
 </div>
+<div class="bg-green">
+    <section class="py-5 container">
+        <div class="row py-5">
+            <div class="col-lg-4 col-md-7 border-bottom border-dark">
+                <h5>
+                    Yoda is the notes web application is a digital
+                    tool designed to help users organize and
+                    manage their notes and ideas online.
+                    The application provides a user-friendly
+                    interface where users can create, edit,
+                    and save notes with ease.
+                </h5>
+            </div>
+            <div class="col-md-5" />
+        </div>
+        <div class="row py-5">
+            <div class="col-lg-4 col-md-7 order-md-2 border-top border-dark">
+                <h5>
+                    With the Notes web application, users can
+                    create multiple notes on different topics
+                    and categories, making it easy to keep
+                    track of ideas and information.
+                    The application allows users to format their
+                    notes with various styling options,
+                    such as bold, italic, underline, and bullet
+                    points, to make them more readable and
+                    presentable.
+                </h5>
+            </div>
+            <div class="col-md-8 order-md-1" />
+        </div>
+    </section>
+</div>
+<footer class="text-muted">
+    <div class="container">
+        &copy; 2023 - Yoda - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
