@@ -1,4 +1,4 @@
-namespace Yoda.Models
+namespace Yoda.Models.ViewModel
 {
     public class ErrorViewModel
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Yoda.Models;
+using Yoda.Models.ViewModel;
 
 namespace Yoda.Controllers
 {
