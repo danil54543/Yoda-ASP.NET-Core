@@ -42,7 +42,7 @@
 	<li><strong><span class="marker">Entity Framework Core</span></strong> is used for working with the database.</li>
 	<li>The <strong><span class="marker">Identity<span style="background-color:#ffffff"> </span></span></strong>library is used for user management.</li>
 	<li>The <strong><span class="marker">MailKit<span style="background-color:#ffffff"> </span></span></strong>library is used for sending email messages.</li>
-	<li>The design is created using <strong><span class="marker">Bootstrap 5</span></strong> framework and my own <span class="marker"><strong>HTML5</strong> <span style="background-color:#ffffff">,</span></span><span class="marker"><strong>CSS</strong>elements</span>.</li>
+	<li>The design is created using <strong><span class="marker">Bootstrap 5</span></strong> framework and my own <span class="marker"><strong>HTML5</strong> <span style="background-color:#ffffff">,</span></span><span class="marker"><strong>CSS</strong> elements</span>.</li>
 	<li>The WYSIWYG editor <span class="marker"><strong>CKEditor 5</strong><span style="background-color:#ffffff"> </span></span>was used as a text editor.</li>
 	<li><strong>Figma </strong>was used to create the design</li>
 	<li>The logo was created by a neural network.</li>
