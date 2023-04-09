@@ -1,26 +1,17 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-#nullable disable
+﻿#nullable disable
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Logging;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+using System.Text.Encodings.Web;
 using Yoda.Models.Entity;
 
-namespace Yoda.Areas.Identity.Pages.Account
+namespace YodaNotes.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {
@@ -149,7 +140,7 @@ namespace Yoda.Areas.Identity.Pages.Account
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
                         var callCode = HtmlEncoder.Default.Encode(callbackUrl);
-                        await _emailSender.SendEmailAsync(Input.Email, $"{Input.FirstName} {Input.LastName} confirm your email.", $"<div style=\"background-size: cover; background-color:#252525\"><br /><div class=\"container\"><p style=\"text-align:center\"><img src=\"https://raw.githubusercontent.com/danil54543/YodaNotes/master/YodaNotes/wwwroot/img/YodaLogoHeader.png\" style=\"height:89px; width:200px\" /></p></div><p style=\"margin-left:40px\"><span style=\"color:#ffffff\"><span>Hi {Input.FirstName},</span></span></p><p style=\"margin-left:40px\"><span style=\"color:#ffffff\"><span>You have successfully created Yoda account. Please click button below to verify your email address and complete your registration.</span></span></p><p style=\"margin-left:40px\"><a style=\"color:#89DC02\" href=\"{callCode}\" target=\"\\&quot;_blank\\&quot;\">Verify your Email</a></p><p style=\"margin-left:40px\"><span style=\"color:#ffffff\"><strong>Having trouble?</strong><br />If above method doesn&#39;t work try copying and pasting this link into your browser.</span><br /><a style=\"color:#89DC02\" href=\"callCode\" target=\"\\&quot;_blank\\&quot;\">{callCode}</a></p><p style=\"margin-left:40px\"><span style=\"color:#ffffff\">Best Regards,<br />Team Yoda</span></p><hr /><p style=\"text-align:center\"><br /><span style=\"color:#999999\">You are receiving this email as you subscribed at Yoda. Visit our Privacy Policy to learn your rights and how we use your data.</span><br />&nbsp;</p></div>");
+                        await _emailSender.SendEmailAsync(Input.Email, $"{Input.FirstName} {Input.LastName} confirm your email.", $"<div style=\"background-size: cover; background-color:#252525\"><br /><div class=\"container\"><p style=\"text-align:center\"><img src=\"https://scontent.fdnk3-2.fna.fbcdn.net/v/t39.30808-6/338024357_244038684732737_7035756382940797957_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=730e14&_nc_ohc=IKBrO-igW74AX8xo40W&_nc_ht=scontent.fdnk3-2.fna&oh=00_AfDJFY5MyKJ5EoSfMixIhZU2tcuZchf9tCn1MpW0uqg-2A&oe=643706D4\" style=\"height:89px; width:200px\" /></p></div><p style=\"margin-left:40px\"><span style=\"color:#ffffff\"><span>Hi {Input.FirstName},</span></span></p><p style=\"margin-left:40px\"><span style=\"color:#ffffff\"><span>You have successfully created Yoda account. Please click button below to verify your email address and complete your registration.</span></span></p><p style=\"margin-left:40px\"><a style=\"color:#89DC02\" href=\"{callCode}\" target=\"\\&quot;_blank\\&quot;\">Verify your Email</a></p><p style=\"margin-left:40px\"><span style=\"color:#ffffff\"><strong>Having trouble?</strong><br />If above method doesn&#39;t work try copying and pasting this link into your browser.</span><br /><a style=\"color:#89DC02\" href=\"callCode\" target=\"\\&quot;_blank\\&quot;\">{callCode}</a></p><p style=\"margin-left:40px\"><span style=\"color:#ffffff\">Best Regards,<br />Team Yoda</span></p><hr /><p style=\"text-align:center\"><br /><span style=\"color:#999999\">You are receiving this email as you subscribed at Yoda. Visit our Privacy Policy to learn your rights and how we use your data.</span><br />&nbsp;</p></div>");
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
                     }
                     else

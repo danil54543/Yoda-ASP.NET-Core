@@ -17,14 +17,15 @@ namespace Yoda
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
-            builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppDbContext>();
-
+            builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+            .AddEntityFrameworkStores<AppDbContext>();
             builder.Services.AddScoped<INoteRepository, NoteRepository>();
             builder.Services.AddScoped<INoteService, NoteService>();
-            builder.Services.AddTransient<IEmailSender, EmailService>();
 
+            // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddTransient<IEmailSender, EmailService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -46,7 +47,7 @@ namespace Yoda
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
-
+            app.MapRazorPages();
             app.Run();
         }
     }

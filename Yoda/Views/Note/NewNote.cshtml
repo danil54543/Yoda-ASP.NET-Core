@@ -1,0 +1,50 @@
+﻿@model NoteViewModel
+@{
+    ViewBag.Title = "New note";
+    Layout = "_Layout";
+}
+<div class="container">
+    <h1 class="text-light">New note</h1>
+    <form asp-action="Create" asp-controller="Note" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input asp-for="@Model.Title" type="text" class="form-control" placeholder="My note">
+        </div>
+        <textarea asp-for="@Model.Item" class="col-12" id="editor" name="Item" rows="10"></textarea>
+        <div class="container p-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="text-light">Marker</span>
+                    <select asp-for="@Model.Marker" class="select-color" name="Marker">
+                        <option style="background-color:#FFFFFF" value="#FFFFFF"></option>
+                        <option style="background-color:#EB3A3A" value="#EB3A3A"></option>
+                        <option style="background-color:#2CC129" value="#2CC129"></option>
+                        <option style="background-color:#3D3AEB" value="#3D3AEB"></option>
+                        <option style="background-color:#EBC43A" value="#EBC43A"></option>
+                        <option style="background-color:#8123BB" value="#8123BB"></option>
+                    </select>
+                </div>
+                <div class="col-md-2 ms-auto">
+                    <button class="btn-signup ms-auto">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts
+    {
+    <script>
+        document.querySelector(".select-color").addEventListener("change", function () {
+            this.style.backgroundColor = this.value;
+        });
+    </script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}
