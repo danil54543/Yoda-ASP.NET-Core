@@ -59,6 +59,10 @@ namespace Yoda.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+            [Display(Name = "Name")]
+            public string FirstName { get; set; }
+            [Display(Name = "Surname")]
+            public string LastName { get; set; }
         }
 
         private async Task LoadAsync(User user)

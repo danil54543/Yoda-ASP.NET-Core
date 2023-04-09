@@ -2,6 +2,9 @@
 @using Yoda.Data
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
+@{
+    var user = UserManager.GetUserAsync(User);
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +38,7 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     <a class="d-flex align-items-center text-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="text-light text-end">@UserManager.GetUserName(User) </span>
+                        <span class="text-light text-end">@user.Result.FirstName @user.Result.LastName </span>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                             <li><a asp-action="NotesDateCreated" asp-controller="Note" class="dropdown-item">Notes</a></li>
                             <li><a asp-area="Identity" asp-page="/Account/Manage/Index" class="dropdown-item">Account</a></li>
