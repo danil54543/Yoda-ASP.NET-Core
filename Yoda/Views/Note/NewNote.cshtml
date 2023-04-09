@@ -9,7 +9,7 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="mb-3">
             <label class="form-label">Title</label>
-            <input asp-for="@Model.Title" type="text" class="form-control" placeholder="My note">
+            <input asp-for="@Model.Title" type="text" class="form-control" aria-required="true" placeholder="My note">
         </div>
         <textarea asp-for="@Model.Item" class="col-12" id="editor" name="Item" rows="10"></textarea>
         <div class="container p-3">

@@ -45,7 +45,12 @@ namespace Yoda.Controllers
         [Authorize]
         public IActionResult Create()
         {
-            return View("NewNote");
+            var model = new NoteViewModel()
+            {
+                Title = "",
+                Item = ""
+            };
+            return View("NewNote",model);
         }
         [HttpPost]
         [Authorize]

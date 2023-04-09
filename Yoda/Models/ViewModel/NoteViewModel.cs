@@ -3,7 +3,7 @@
     public class NoteViewModel
     {
         public long Id { get; set; }
-        public string? Title { get; set; }
+        public string Title { get; set; }
         public string Item { get; set; }
         public string? Marker { get; set; }
         public DateTime DateCreated { get; set; }
