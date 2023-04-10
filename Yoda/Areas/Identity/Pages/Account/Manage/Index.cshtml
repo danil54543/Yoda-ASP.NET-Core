@@ -31,13 +31,16 @@
                 
             </form>
         </div>
-        <div style="padding: 70px;"></div>
+        <button class="btn-newnote"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></button>
+        <button class="btn-newnote"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a></button>
 
     </div>
     <div class="row">
         <div class="col-md-6">
-            <p class="text-light">Delete your account <span class="text-danger"> (cannot be recovered)</span> </p>
+            <h3 class="text-light">Delete your account</h3>
+            
                 <a id="delete" asp-page="DeletePersonalData" class="btn btn-danger">Delete</a>
+                <span class="text-warning"> (cannot be recovered)</span>
         </div>
     </div>
 </div>
