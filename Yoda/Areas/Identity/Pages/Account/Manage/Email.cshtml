@@ -4,8 +4,8 @@
     ViewData["Title"] = "Manage Email";
     ViewData["ActivePage"] = ManageNavPages.Email;
 }
-<div class="row">
-	<button class="btn"><a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn-back"></a></button>
+<div class="row col-3">
+    <<a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-light btn-lg">←</a>
 	<h3 class="text-light">Change Email</h3>
 </div>
 <partial name="_StatusMessage" for="StatusMessage" />

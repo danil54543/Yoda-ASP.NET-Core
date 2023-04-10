@@ -8,20 +8,19 @@
         Layout = "/Areas/Identity/Pages/_Layout.cshtml";
     }
 }
+<div class="text-center">
+    <h1 class="text-light">Manage your account</h1>
 
-<h1 class="text-light">Manage your account</h1>
+</div>
 
 <div>
     <hr />
-    <div class="row">
 
-        <div class="col-md-9">
-            <div class="container">
+    <div class="col-xl-12 mx-auto">
+            <main role="main">
 				@RenderBody()
-
-            </div>
+            </main>
         </div>
-    </div>
 </div>
 
 @section Scripts {
