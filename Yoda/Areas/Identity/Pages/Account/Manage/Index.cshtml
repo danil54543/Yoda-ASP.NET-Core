@@ -5,44 +5,57 @@
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
 <div class="bg-gray">
-    <h3 class="bg-gray text-light">@ViewData["Title"]</h3>
+    <h3 class="text-light">@ViewData["Title"]</h3>
     <partial class="bg-gray" name="_StatusMessage" for="StatusMessage" />
     <div class="bg-gray row">
         <div class="bg-gray col-md-6">
             <form class="bg-gray" id="profile-form" method="post">
                 <div class="bg-gray" asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-floating">
-                    <input asp-for="Username" class="form-control" disabled />
-                    <label asp-for="Username" class="form-label">Email</label>
+                <div class="mb-3 row">
+                    <label  class="text-light col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Username" readonly class="text-light form-control-plaintext" id="staticEmail">
+                    </div>
                 </div>
-                <div class="form-floating">
-                    <input asp-for="Input.FirstName" class="form-control" />
-                    <label asp-for="Input.FirstName" class="form-label"></label>
-                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                <div class="mb-3 row">
+                    <label class=" text-light col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Input.FirstName" class="form-control">
+                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="form-floating">
-                    <input asp-for="Input.LastName" class="form-control" />
-                    <label asp-for="Input.LastName" class="form-label"></label>
-                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                <div class="mb-3 row">
+                    <label class="text-light col-sm-2 col-form-label">Surname</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Input.LastName" class="form-control">
+                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                    </div>
                 </div>
                 <div>
-					<button id="update-profile-button" type="submit" class="w-100 btn-signup">Save</button>
-                </div>
-                
+					<button id="update-profile-button" type="submit" class="btn-signup">Save</button>
+                </div>             
             </form>
         </div>
-        <button class="btn-newnote"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></button>
-        <button class="btn-newnote"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a></button>
-
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h3 class="text-light">Delete your account</h3>
-            
+        <div class="row" style="padding: 15px">
+            <div class="col-md-6">
+                <h3 class="text-light">Change email</h3>
+                <a class="btn btn-secondary @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Change</a>
+            </div>
+           
+        </div>
+        <div class="row" style="padding: 15px">
+            <div class="col-md-6">
+                <h3 class="text-light">Change password</h3>
+				<a class="btn btn-secondary @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Change</a>
+        </div>
+        <div class="row" style="padding: 15px">
+            <div class="col-md-6">
+                <h3 class="text-light">Delete your account</h3>
                 <a id="delete" asp-page="DeletePersonalData" class="btn btn-danger">Delete</a>
                 <span class="text-warning"> (cannot be recovered)</span>
+            </div>
         </div>
-    </div>
+    </div> 
 </div>
 
 @section Scripts {
